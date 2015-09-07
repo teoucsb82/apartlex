@@ -1,0 +1,35 @@
+- path = @property.persisted? ? dashboard_property_path(@property) : dashboard_properties_path
+- method = @property.persisted? ? "PATCH" : "POST"
+
+= simple_form_for(@property, url: path, html: { multipart: true }, method: method) do |f|
+  = f.error_notification
+  = f.input :account_id, as: :hidden
+  .row
+    .col-sm-8
+      .form-inputs
+        .form-group
+          .col-sm-12
+            = f.label :street, "Property Address", class: "control-label"
+            = f.input :street, 
+                      wrapper: false, 
+                      placeholder: "Street Address",
+                      label: false
+        .form-group
+          .col-sm-6
+            = f.input :city, 
+                      wrapper: false,  
+                      placeholder: "City",
+                      label: false
+          .col-sm-2
+            = f.input :state, 
+                      wrapper: false,  
+                      placeholder: "State",
+                      label: false
+          .col-sm-4
+            = f.input :zip, 
+                      wrapper: false,  
+                      placeholder: "Zip",
+                      label: false
+      .form-actions
+        .col-sm-12
+          = f.button :submit, class: 'btn btn-primary'

@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations" }
   
   get '/dashboard' => 'dashboard#home', as: :dashboard
-  get 'pages/home'
+  resource :dashboard, only: [] do
+    resources :settings, only: [:show]
+    resources :properties do
+      patch '/:id' => 'properties#update'
+    end
+  end
 
+  get 'pages/home'
+  delete 'images/destroy' => 'images#destroy'
+  post '/images/create' => 'images#create'
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

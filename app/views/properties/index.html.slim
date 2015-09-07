@@ -1,0 +1,27 @@
+h1 Listing properties
+
+table
+  thead
+    tr
+      th Street
+      th City
+      th State
+      th Zip
+      th
+      th
+      th
+
+  tbody
+    - @properties.each do |property|
+      tr
+        td = property.street
+        td = property.city
+        td = property.state
+        td = property.zip
+        td = link_to 'Show', dashboard_property_path(property)
+        td = link_to 'Edit', edit_dashboard_property_path(property)
+        td = link_to 'Destroy', dashboard_property_path(property), data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Property', new_dashboard_property_path

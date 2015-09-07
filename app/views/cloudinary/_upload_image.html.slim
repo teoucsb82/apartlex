@@ -1,0 +1,29 @@
+.upload-image-dropzone
+  .form-inputs
+    = f.simple_fields_for :images do |image|
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title Images
+        .panel-body
+          .row
+            .col-sm-4
+              = cl_image_upload_tag(:image_id, return_delete_token: true, multiple: true)
+              = link_to nil, class: "btn btn-primary", id: "add-file" do
+                span.glyphicon.glyphicon-plus
+                |  Add Images
+            .col-sm-8
+              .progress#complete-progress
+                .progress-bar.progress-bar-info
+        .panel-footer
+          .upload-image-preview
+            - f.object.images.each do |img|
+              .row.upload-row
+                .col-xs-3
+                  .thumbnail
+                    = cl_image_tag img.public_id
+                .col-xs-8
+                  span.original-filename = img.name
+                .col-xs-1.destroy-image
+                  = link_to 'Remove', "#", data: { confirm: 'Are you sure you want to remove this image?', remote: true, public_id: img.public_id }, class: "btn btn-danger btn-sm remove-image"
+                
+

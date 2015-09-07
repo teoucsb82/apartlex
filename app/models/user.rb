@@ -4,13 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :account
+  has_one :account
+  has_many :properties, through: :account
 
   def create_account(params)
-    return unless params[:user] && params[:user][:accounts] && params[:user][:accounts][:company_name]
-    Account.transaction do
-      account = Account.create(company_name: params[:user][:accounts][:company_name])
-      self.account_id = account.id
-    end
+    return unless params[:user] && params[:user][:accounts] && params[:user][:accounts][:name]
+    account = Account.create(name: params[:user][:accounts][:name], user_id: self.id)
   end
 end

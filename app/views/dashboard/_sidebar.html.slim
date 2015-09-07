@@ -3,7 +3,7 @@
     = link_to "Home", dashboard_path, class: "list-group-item"
     = link_to "Rentals", "#", data: { parent: "#sidebar", target: "#messages", toggle: "collapse" }, class: "list-group-item"
     #messages.sublinks.collapse
-      a.list-group-item.small
+      = link_to dashboard_properties_path, class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
         | Properties
       a.list-group-item.small
@@ -113,27 +113,27 @@
       | Reports
       span.glyphicon.glyphicon-stats.pull-right
 
-    = link_to "My Account", "#", data: { parent: "#sidebar", target: "#settings", toggle: "collapse" }, class: "list-group-item"
+    = link_to "Settings", "#", data: { parent: "#sidebar", target: "#settings", toggle: "collapse" }, class: "list-group-item"
     #settings.sublinks.collapse
-      a.list-group-item.small
+      = link_to dashboard_setting_path(:profile), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
         | My settings
-      a.list-group-item.small
+      = link_to dashboard_setting_path(:application), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
         | Application settings
-      a.list-group-item.small
+      = link_to dashboard_setting_path(:users), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
         | Users
-      a.list-group-item.small
+      = link_to dashboard_setting_path(:user_roles), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
         | User roles
-      a.list-group-item.small
+      = link_to dashboard_setting_path(:account_and_billing), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
-        | Account and billing
-      a.list-group-item.small
+        | Account and Billing
+      = link_to dashboard_setting_path(:import), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
-        | Import data
-      a.list-group-item.small
+        | Import
+      = link_to dashboard_setting_path(:export), class: "list-group-item small" do
         span.glyphicon.glyphicon-chevron-right
-        | Export data
+        | Export
     = link_to "Support and Help", "#", class: "list-group-item"

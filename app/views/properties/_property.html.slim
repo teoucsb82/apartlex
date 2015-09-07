@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    h1 = property.street
+    h2.subheader #{property.city}, #{property.state} #{property.zip}
+.row
+  .col-xs-12
+    = simple_form_for(@property, url: dashboard_property_path(property), html: { multipart: true }, method: "PATCH") do |f|
+      = f.error_notification
+      = f.input :account_id, as: :hidden
+      .form-inputs
+        .form-group
+          = render 'cloudinary/upload_image', f: f
