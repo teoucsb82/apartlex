@@ -1,0 +1,139 @@
+#sidebar
+  .panel.list-group
+    = link_to "Home", dashboard_path, class: "list-group-item"
+    = link_to "Rentals", "#", data: { parent: "#sidebar", target: "#messages", toggle: "collapse" }, class: "list-group-item"
+    #messages.sublinks.collapse
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Properties
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Leases
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Tenants
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Listings
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Applicants
+
+    = link_to "Accounting", "#", data: { parent: "#sidebar", target: "#accounting", toggle: "collapse" }, class: "list-group-item"
+    #accounting.sublinks.collapse
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Financials
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Ledger
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Banking
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Vendors
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Work Orders
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Bills
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Recurring Transactions
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Budgets
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Chart of Accounts
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | 1099-MISC tax filings
+
+    = link_to "Tasks", "#", data: { parent: "#sidebar", target: "#tasks", toggle: "collapse" }, class: "list-group-item"
+    #tasks.sublinks.collapse
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Incoming Requests
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | My Tasks
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | All Tasks
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Recurring Tasks
+
+    = link_to "Communication", "#", data: { parent: "#sidebar", target: "#communication", toggle: "collapse" }, class: "list-group-item"
+    #communication.sublinks.collapse
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Public Site
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Resident Site
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Resident site users
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Resident site contact directory
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Resident site announcements
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Resident site community discussions
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Mailings
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Mailing templates
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Emails
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Email templates
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Texts
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Text templates
+
+    a.list-group-item href="#" 
+      | Files
+      span.glyphicon.glyphicon-stats.pull-right
+    a.list-group-item href="#" 
+      | Reports
+      span.glyphicon.glyphicon-stats.pull-right
+
+    = link_to "My Account", "#", data: { parent: "#sidebar", target: "#settings", toggle: "collapse" }, class: "list-group-item"
+    #settings.sublinks.collapse
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | My settings
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Application settings
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Users
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | User roles
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Account and billing
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Import data
+      a.list-group-item.small
+        span.glyphicon.glyphicon-chevron-right
+        | Export data
+    = link_to "Support and Help", "#", class: "list-group-item"
