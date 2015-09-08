@@ -1,0 +1,9 @@
+li class="#{'active' if links.values.include? url_for }"
+  = link_to "#" do
+    i.fa class="fa-#{icon}"
+    span.nav-label = text
+    span.fa.arrow
+  ul.nav.nav-second-level.collapse
+    - links.each do |t, p|
+      li class="#{'active' if p == url_for }"
+        = link_to t, p
