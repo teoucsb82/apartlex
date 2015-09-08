@@ -65,6 +65,7 @@ GEM
     cloudinary (1.1.0)
       aws_cf_signer
       rest-client
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -236,6 +237,7 @@ DEPENDENCIES
   byebug
   carrierwave
   cloudinary
+  cocoon
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-rails

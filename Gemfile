@@ -38,6 +38,6 @@ gem 'font-awesome-rails'
 #back end
 gem 'simple_form'
 gem 'slim-rails'
-
+gem 'cocoon'
 gem 'carrierwave'
 gem 'cloudinary'

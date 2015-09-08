@@ -76,6 +76,6 @@ class PropertiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def property_params
-    params.require(:property).permit(:street, :city, :state, :zip, :account_id).merge(:account_id => current_user.account.id)
+    params.require(:property).permit(:street, :city, :state, :zip, :account_id, apartments_attributes: [:id, :property_id, :unit, :square_footage, :rent, :description, :_destroy]).merge(:account_id => current_user.account.id)
   end
 end
