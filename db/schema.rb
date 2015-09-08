@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908000605) do
+ActiveRecord::Schema.define(version: 20150908023503) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20150908000605) do
   end
 
   add_index "properties", ["account_id"], name: "index_properties_on_account_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.boolean  "collapse_menu", default: false
+    t.boolean  "fixed_sidebar", default: false
+    t.boolean  "top_navbar",    default: false
+    t.boolean  "boxed_layout",  default: false
+    t.boolean  "fixed_footer",  default: false
+    t.integer  "account_id",                    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
