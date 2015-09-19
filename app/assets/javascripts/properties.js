@@ -1,4 +1,6 @@
 //= require iCheck/icheck.min.js
+//= require staps/jquery.steps.min.js
+//= require validate/jquery.validate.min.js
 //= require jeditable/jquery.jeditable.js
 //= require dataTables/jquery.dataTables.js
 //= require dataTables/dataTables.bootstrap.js
@@ -8,3 +10,4 @@
 //= require jqGrid/jquery.jqGrid.min.js
 //= require jquery-ui/jquery-ui.min.js
 //= require footable/footable.all.min.js
+//= require blueimp/jquery.blueimp-gallery.min.js

@@ -1,7 +1,87 @@
-p#notice = notice
-
 = render @property
 
-= link_to 'Edit', edit_dashboard_property_path(@property)
-'|
-= link_to 'Back', dashboard_properties_path
+/ = link_to 'Edit', edit_dashboard_property_path(@property)
+/ '|
+/ = link_to 'Back', dashboard_properties_path
+
+/ .row
+/   .col-xs-12
+/     h1 = property.street
+/     h2.subheader #{property.city}, #{property.state} #{property.zip}
+
+/ .row
+/   .col-xs-12
+/     = simple_form_for(property, url: dashboard_property_path(property), method: "PATCH") do |f|
+/       h3 Apartments
+/       #apartments
+/         = f.simple_fields_for :apartments do |apartment|
+/           = render 'apartment_fields', f: apartment
+/         .links
+/           = link_to_add_association 'add apartment', f, :apartments
+/       = f.submit
+/ .row
+/   .col-xs-12
+/     = simple_form_for(property, url: dashboard_property_path(property), html: { multipart: true }, method: "PATCH") do |f|
+/       = f.error_notification
+/       = f.input :account_id, as: :hidden
+/       .form-inputs
+/         .form-group
+/           = render 'cloudinary/upload_image', f: f
+
+
+.row
+  .col-lg-12
+    .wrapper.wrapper-content.animated.fadeInUp
+      .ibox
+        .ibox-content
+          .row
+            .col-lg-12
+              .m-b-md
+                = link_to 'Edit property', edit_dashboard_property_path(@property), class: "btn btn-primary btn-outline btn-sm btn-rounded pull-right"
+                h2 = @property.pretty_name
+                strong Status: 
+                span.label.label-primary Available
+                span.label.label-danger Not Available
+          .row
+            .col-lg-4
+              - if @property.primary_photo
+                = cl_image_tag(@property.primary_photo, class: "img-responsive")
+              - else
+                p No photos found!
+                = link_to "Add A Photo", "#images", data: { toggle: "tab"}, class: "btn btn-info btn-rounded"
+            .col-lg-7
+              h2 Listing description
+              p listing listing listing listing listing listing listing listing listing 
+          .row.m-t-sm
+            .col-lg-12
+              .panel.blank-panel
+                .panel-heading
+                  .panel-options
+                    ul.nav.nav-tabs
+                      li.active = link_to "Units", "#units", data: { toggle: "tab" }
+                      li = link_to "Property Images", "#images", data: { toggle: "tab" }
+                .panel-body
+                  .tab-content
+                    #units.tab-pane.active
+                      = render 'units'
+                    #images.tab-pane
+                      h2 Lightbox image gallery
+                      p
+                        strong blueimp Gallery
+                        | is a touch-enabled, responsive and customizable image &amp; video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers.
+                        | It features swipe, mouse and keyboard navigation, transition effects, slideshow functionality, fullscreen support and on-demand content loading and can be extended to display additional content types.
+                        | Full documentation you can find at:
+                        a href="https://github.com/blueimp/Gallery/blob/master/README.md" target="_blank"  https://github.com/blueimp/Gallery/blob/master/README.md
+                      .lightBoxGallery
+                        - @property.images.each do |image|
+                          = link_to "http://res.cloudinary.com/apartlex/image/upload/v1/#{image.public_id}", data: { gallery: "" } do
+                            = cl_image_tag(image.public_id, height: 50, width: 50)
+                        /! The Gallery as lightbox dialog, should be a child element of the document body
+                        #blueimp-gallery.blueimp-gallery.blueimp-gallery-controls
+                          .slides
+                          h3.title
+                          a.prev ‹
+                          a.next ›
+                          a.close ×
+                          a.play-pause
+                          ol.indicator

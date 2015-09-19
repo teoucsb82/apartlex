@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908023503) do
+ActiveRecord::Schema.define(version: 20150919212310) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20150908023503) do
 
   add_index "apartments", ["property_id"], name: "index_apartments_on_property_id"
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "public_id"
@@ -51,11 +64,14 @@ ActiveRecord::Schema.define(version: 20150908023503) do
     t.string   "state"
     t.integer  "zip"
     t.integer  "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+    t.string   "description"
   end
 
   add_index "properties", ["account_id"], name: "index_properties_on_account_id"
+  add_index "properties", ["slug"], name: "index_properties_on_slug", unique: true
 
   create_table "settings", force: :cascade do |t|
     t.boolean  "collapse_menu", default: false

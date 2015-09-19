@@ -13,6 +13,7 @@ html
       #page-wrapper.gray-bg
         = render 'layouts/topnavbar'
         = breadcrumb_header
+        = render 'layouts/flash'
         = yield
         = render 'layouts/footer'
     = javascript_include_tag 'application'

@@ -1,0 +1,276 @@
+.navbar-wrapper
+  nav.navbar.navbar-default.navbar-fixed-top role="navigation" 
+    .container
+      .navbar-header.page-scroll
+        button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to "Apartlex", root_url, class: "navbar-brand"
+      #navbar.navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li = link_to "Home", "#page-top", class: "page-scroll"
+          li = link_to "Features", "#features", class: "page-scroll"
+          li = link_to "Testimonials", "#testimonials", class: "page-scroll"
+          li = link_to "Pricing", "#pricing", class: "page-scroll"
+          li = link_to "Contact", "#contact", class: "page-scroll"
+          li = link_to "Sign In", new_session_path(User.new)
+#inSlider.carousel.carousel-fade data-ride="carousel" 
+  .carousel-inner role="listbox" 
+    .item.active
+      .container
+        .carousel-caption
+          .row
+            .col-sm-8.animated.fadeInDown
+              h1
+                | Apartlex
+                br
+                | Professional Management Software
+              p Real estate management tools for everyone
+              p = link_to "Learn More", "#features", class: "btn btn-lg btn-success"
+            .col-sm-4.animated.fadeInDown
+              .banner-form
+                .form-title
+                  h3 Sign Up For a 30-Day No Risk FREE Trial
+                .form-body
+                  - resource = User.new
+                  = simple_form_for(resource, url: registration_path(resource), defaults: { required: true }) do |f|
+                    = f.error_notification
+
+                    .form-inputs
+                      = f.input :email, 
+                                autofocus: true, 
+                                label: "Email Address",
+                                placeholder: "Email Address",
+                                input_html: { class: "input-lg" }
+                      = f.input :password, 
+                                placeholder: "Password",
+                                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                input_html: { class: "input-lg" }
+                    .form-inputs
+                      = f.simple_fields_for :accounts do |account|
+                        = account.input :name, 
+                                        label: "Company Name", 
+                                        placeholder: "Company Name",
+                                        input_html: { class: "input-lg" }
+
+                    .form-actions
+                      = f.button :submit, "Sign up", class: "btn-primary btn-lg btn-block"
+
+      /! Set background for slide in css
+      .header-back.one
+section#features.container.services
+  .row
+    .col-sm-3.text-center.animated.fadeInDown
+      i.fa.fa-money.features-icon
+      h2 No Transaction Fees
+      p Securely collect and deposit rent checks & late fees or pay vendors with zero fees (*requires Venmo account).
+    .col-sm-3.text-center.animated.fadeInDown
+      i.fa.fa-home.features-icon
+      h2 Rent With Ease
+      p Post availabilities, accept applications, run tenant background checks and sign leases anytime, anywhere.
+    .col-sm-3.text-center.animated.fadeInDown
+      i.fa.fa-wrench.features-icon
+      h2 Management Tools
+      p Our robust tenant database and financial tracking software make it easy to get the big picture at a glance.
+    .col-sm-3.text-center.animated.fadeInDown
+      i.fa.fa-picture-o.features-icon
+      h2 Free Website + Hosting
+      p Get your small business online with a professional website ready to serve you and your tenants in minutes.
+section.container.features
+  .row
+    .col-lg-12.text-center
+      .primary-line
+      h1 More great features
+      p We make it easy to rent out property -- from a single room to entire condominiums.
+  .row.features-block
+    .col-lg-6.features-text.wow.fadeInLeft
+      small INSPINIA
+      h2 Perfectly designed
+      p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.
+      a.btn.btn-primary href=""  Learn more
+    .col-lg-6.text-right.wow.fadeInRight
+      = cl_image_tag("landing/sf_bridge", class: "img-responsive pull-right", width: 500, quality: 80, crop: :fill)
+section#testimonials.primary-section.testimonials
+  .container
+    .row
+      .col-lg-12.text-center.wow.zoomIn
+        i.fa.fa-comment.big-icon
+        h1
+          | What our users say
+        .testimonials-text
+          i "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+        small
+          strong 12.02.2014 - Andy Smith
+section#pricing.pricing
+  .container
+    .row.m-b-lg
+      .col-lg-12.text-center
+        .primary-line
+        h1 App Pricing
+        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
+    .row
+      .col-lg-4.wow.zoomIn
+        ul.pricing-plan.list-unstyled
+          li.pricing-title
+            | Basic
+          li.pricing-desc
+            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+          li.pricing-price
+            span $16
+            | \/ month
+          li
+            | Dashboards
+          li
+            | Projects view
+          li
+            | Contacts
+          li
+            | Calendar
+          li
+            | AngularJs
+          li
+            a.btn.btn-primary.btn-xs href="#"  Signup
+      .col-lg-4.wow.zoomIn
+        ul.pricing-plan.list-unstyled.selected
+          li.pricing-title
+            | Standard
+          li.pricing-desc
+            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+          li.pricing-price
+            span $22
+            | \/ month
+          li
+            | Dashboards
+          li
+            | Projects view
+          li
+            | Contacts
+          li
+            | Calendar
+          li
+            | AngularJs
+          li
+            strong Support platform
+          li.plan-action
+            a.btn.btn-primary.btn-xs href="#"  Signup
+      .col-lg-4.wow.zoomIn
+        ul.pricing-plan.list-unstyled
+          li.pricing-title
+            | Premium
+          li.pricing-desc
+            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+          li.pricing-price
+            span $160
+            | \/ month
+          li
+            | Dashboards
+          li
+            | Projects view
+          li
+            | Contacts
+          li
+            | Calendar
+          li
+            | AngularJs
+          li
+            a.btn.btn-primary.btn-xs href="#"  Signup
+    .row.m-t-lg
+      .col-lg-8.col-lg-offset-2.text-center.m-t-lg
+        p
+          | *Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+          span.primary Various versions
+          | have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+section#contact.gray-section.contact
+  .container
+    .row.m-b-lg
+      .col-lg-12.text-center
+        .primary-line
+        h1 Contact Us
+        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
+    .row.m-b-lg
+      .col-lg-3.col-lg-offset-3
+        address
+          strong
+            span.primary Company name, Inc.
+          br/
+          | 795 Folsom Ave, Suite 600
+          br/
+          | San Francisco, CA 94107
+          br/
+          abbr title="Phone"  P:
+          | (123) 456-7890
+      .col-lg-4
+        p.text-color
+          | Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
+    .row
+      .col-lg-12.text-center
+        a.btn.btn-primary href="mailto:test@email.com"  Send us mail
+        p.m-t-sm
+          | Or follow us on social platform
+        ul.list-inline.social-icon
+          li
+            a href="#" 
+              i.fa.fa-twitter
+          li
+            a href="#" 
+              i.fa.fa-facebook
+          li
+            a href="#" 
+              i.fa.fa-linkedin
+    .row
+      .col-lg-8.col-lg-offset-2.text-center.m-t-lg.m-b-lg
+        p
+          strong &copy; 2015 Company Name
+          br/
+          | consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
+
+- content_for :javascript
+  javascript:
+    $(function() {
+      var cbpAnimatedHeader;
+      $('body').addClass('landing-page');
+      $('body').attr('id', 'page-top');
+      $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 80
+      });
+      $('a.page-scroll').bind('click', function(event) {
+        var link;
+        link = $(this);
+        $('html, body').stop().animate({
+          scrollTop: $(link.attr('href')).offset().top - 50
+        }, 500);
+        event.preventDefault();
+      });
+      cbpAnimatedHeader = (function() {
+        var changeHeaderOn, didScroll, docElem, header, init, scrollPage, scrollY;
+        docElem = document.documentElement;
+        header = document.querySelector('.navbar-default');
+        didScroll = false;
+        changeHeaderOn = 200;
+        init = function() {
+          window.addEventListener('scroll', (function(event) {
+            if (!didScroll) {
+              didScroll = true;
+              setTimeout(scrollPage, 250);
+            }
+          }), false);
+        };
+        scrollPage = function() {
+          var sy;
+          sy = scrollY();
+          if (sy >= changeHeaderOn) {
+            $(header).addClass('navbar-scroll');
+          } else {
+            $(header).removeClass('navbar-scroll');
+          }
+          didScroll = false;
+        };
+        scrollY = function() {
+          return window.pageYOffset || docElem.scrollTop;
+        };
+        init();
+      })();
+    });
