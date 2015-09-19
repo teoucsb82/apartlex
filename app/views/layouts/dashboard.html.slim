@@ -2,6 +2,7 @@ doctype html
 html
   head
     title Apartlex
+    = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
     meta charset="utf-8"
@@ -11,7 +12,10 @@ html
       = render 'layouts/sidebar'
       #page-wrapper.gray-bg
         = render 'layouts/topnavbar'
+        = breadcrumb_header
         = yield
         = render 'layouts/footer'
     = javascript_include_tag 'application'
+    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
+    = yield :javascript
     = cloudinary_js_config

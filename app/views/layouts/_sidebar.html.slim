@@ -24,6 +24,14 @@ nav.navbar-default.navbar-static-side role="navigation"
                         "Tenants" => root_url,
                         "Listings" => root_url,
                         "Applicants" => root_url } } 
+      = render partial: 'dashboard/sidebar_nested_link', locals: { text: "Settings", icon: "gear", 
+               links: { "My Settings" => dashboard_setting_path(:profile),
+                        "Application settings" => dashboard_setting_path(:application),
+                        "Users" => dashboard_setting_path(:users),
+                        "User Roles" => dashboard_setting_path(:user_roles),
+                        "Account and Billing" => dashboard_setting_path(:account_and_billing),
+                        "Import" => dashboard_setting_path(:import),
+                        "Export" => dashboard_setting_path(:export), } } 
       li
         a href="index.html" 
           i.fa.fa-th-large

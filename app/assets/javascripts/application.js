@@ -15,7 +15,9 @@
 //= require bootstrap-sprockets
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
+//= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require cloudinary
 //= require cocoon
-//= require_tree .
+//= require global
+//= require inspinia.js

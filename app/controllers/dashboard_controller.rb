@@ -3,6 +3,5 @@ class DashboardController < ApplicationController
   before_filter :load_user
   
   def home
-
   end
 end
