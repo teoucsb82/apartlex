@@ -21,42 +21,39 @@
     .item.active
       .container
         .carousel-caption
-          .row
-            .col-sm-8.animated.fadeInDown
-              h1
-                | Apartlex
-                br
-                | Professional Management Software
-              p Real estate management tools for everyone
-              p = link_to "Learn More", "#features", class: "btn btn-lg btn-success"
-            .col-sm-4.animated.fadeInDown
-              .banner-form
-                .form-title
-                  h3 Sign Up For a 30-Day No Risk FREE Trial
-                .form-body
-                  - resource = User.new
-                  = simple_form_for(resource, url: registration_path(resource), defaults: { required: true }) do |f|
-                    = f.error_notification
+          .col-md-8.animated.fadeInDown
+            h1.text-primary Apartlex
+            h2 Residential & Commercial Real Estate Software
+            p Professional Management Tools For Any-Sized Business
+            p = link_to "Learn More", "#features", class: "btn btn-lg btn-secondary btn-rounded hidden-xs hidden-sm hidden-md"
+          .col-md-4.animated.fadeInDown
+            .banner-form
+              .form-title
+                h3 Sign Up For a 30-Day No Risk FREE Trial
+              .form-body
+                - resource = User.new
+                = simple_form_for(resource, url: registration_path(resource), defaults: { required: true }) do |f|
+                  = f.error_notification
 
-                    .form-inputs
-                      = f.input :email, 
-                                autofocus: true, 
-                                label: "Email Address",
-                                placeholder: "Email Address",
-                                input_html: { class: "input-lg" }
-                      = f.input :password, 
-                                placeholder: "Password",
-                                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                                input_html: { class: "input-lg" }
-                    .form-inputs
-                      = f.simple_fields_for :accounts do |account|
-                        = account.input :name, 
-                                        label: "Company Name", 
-                                        placeholder: "Company Name",
-                                        input_html: { class: "input-lg" }
+                  .form-inputs
+                    = f.input :email, 
+                              autofocus: true, 
+                              label: "Email Address",
+                              placeholder: "Email Address",
+                              input_html: { class: "input-lg" }
+                    = f.input :password, 
+                              placeholder: "Password",
+                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                              input_html: { class: "input-lg" }
+                  .form-inputs
+                    = f.simple_fields_for :accounts do |account|
+                      = account.input :name, 
+                                      label: "Company Name", 
+                                      placeholder: "Company Name",
+                                      input_html: { class: "input-lg" }
 
-                    .form-actions
-                      = f.button :submit, "Sign up", class: "btn-primary btn-lg btn-block"
+                  .form-actions
+                    = f.button :submit, "Sign up", class: "btn-primary btn-lg btn-block"
 
       /! Set background for slide in css
       .header-back.one
