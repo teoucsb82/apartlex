@@ -21,3 +21,26 @@
 
 en:
   hello: "Hello world"
+  subscription:
+    basic:
+      description: foobar blah
+      price: 19
+      stat1: stat1
+      stat2:
+      stat3:
+      stat4:
+    plus:
+      description: foobar blah
+      price: 29
+      recommended: true
+      stat1: stat1 
+      stat2:
+      stat3:
+      stat4:
+    premium:
+      description: foobar blah
+      price: 49
+      stat1: stat1
+      stat2:
+      stat3:
+      stat4:

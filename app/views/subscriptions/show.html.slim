@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Account:
+  = @subscription.account
+p
+  strong Type of:
+  = @subscription.type_of
+p
+  strong Active:
+  = @subscription.active
+p
+  strong Start date:
+  = @subscription.start_date
+p
+  strong End date:
+  = @subscription.end_date
+
+= link_to 'Edit', edit_subscription_path(@subscription)
+'|
+= link_to 'Back', subscriptions_path

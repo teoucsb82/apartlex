@@ -390,6 +390,8 @@ body.landing-page {
   .pricing-plan {
     margin: 20px 30px 0 30px;
     border-radius: 4px;
+    border: 1px solid $brand-primary;
+    @include box-shadow(0 0 10px $brand-primary);
   }
   .pricing-plan.selected {
     transform: scale(1.1);
@@ -397,13 +399,17 @@ body.landing-page {
   }
   .pricing-plan li {
     padding: 10px 16px;
-    border-top: 1px solid $border-color;
     text-align: center;
     color: #aeaeae;
   }
   .pricing-plan .pricing-price span {
     font-weight: 700;
     color: $brand-primary;
+    &:after {
+      font-weight: initial;
+      color: #aeaeae;
+      content: " / month";
+    }
   }
   li.pricing-desc {
     font-size: 13px;

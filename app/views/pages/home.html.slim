@@ -83,10 +83,10 @@ section.container.features
       p We make it easy to rent out property -- from a single room to entire condominiums.
   .row.features-block
     .col-lg-6.features-text.wow.fadeInLeft
-      small INSPINIA
-      h2 Perfectly designed
-      p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.
-      a.btn.btn-primary href=""  Learn more
+      small APARTLEX
+      h2 Text goes here
+      p more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here.
+      = link_to "Learn More", "#features", class: "btn btn-primary btn-outline"
     .col-lg-6.text-right.wow.fadeInRight
       = cl_image_tag("landing/sf_bridge", class: "img-responsive pull-right", width: 500, quality: 80, crop: :fill)
 section#testimonials.primary-section.testimonials
@@ -105,80 +105,27 @@ section#pricing.pricing
     .row.m-b-lg
       .col-lg-12.text-center
         .primary-line
-        h1 App Pricing
-        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
+        h1 Pricing
+        p All Memberships Come With A 30-Day Free Trial. Cancel anytime.
     .row
-      .col-lg-4.wow.zoomIn
-        ul.pricing-plan.list-unstyled
-          li.pricing-title
-            | Basic
-          li.pricing-desc
-            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          li.pricing-price
-            span $16
-            | \/ month
-          li
-            | Dashboards
-          li
-            | Projects view
-          li
-            | Contacts
-          li
-            | Calendar
-          li
-            | AngularJs
-          li
-            a.btn.btn-primary.btn-xs href="#"  Signup
-      .col-lg-4.wow.zoomIn
-        ul.pricing-plan.list-unstyled.selected
-          li.pricing-title
-            | Standard
-          li.pricing-desc
-            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          li.pricing-price
-            span $22
-            | \/ month
-          li
-            | Dashboards
-          li
-            | Projects view
-          li
-            | Contacts
-          li
-            | Calendar
-          li
-            | AngularJs
-          li
-            strong Support platform
-          li.plan-action
-            a.btn.btn-primary.btn-xs href="#"  Signup
-      .col-lg-4.wow.zoomIn
-        ul.pricing-plan.list-unstyled
-          li.pricing-title
-            | Premium
-          li.pricing-desc
-            | Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          li.pricing-price
-            span $160
-            | \/ month
-          li
-            | Dashboards
-          li
-            | Projects view
-          li
-            | Contacts
-          li
-            | Calendar
-          li
-            | AngularJs
-          li
-            a.btn.btn-primary.btn-xs href="#"  Signup
+      - t("subscription").each do |name, details|
+        .col-lg-4.animated.zoomIn
+          ul.pricing-plan.list-unstyled class="#{'selected' if details[:recommended] }"
+            li.pricing-title = name.to_s.humanize
+            li.pricing-desc = details[:description]
+            li.pricing-price 
+              span = number_to_currency details[:price], precision: 0
+            li = details[:stat1]
+            li = details[:stat1]
+            li = details[:stat1]
+            li = details[:stat1]
+            li = details[:stat1]
+            li = link_to "Sign Up", new_subscription_path, class: "btn btn-primary"
     .row.m-t-lg
       .col-lg-8.col-lg-offset-2.text-center.m-t-lg
         p
-          | *Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-          span.primary Various versions
-          | have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+          | Subscriptions require acceptance of our 
+          = link_to "Terms of Service", terms_of_service_path
 section#contact.gray-section.contact
   .container
     .row.m-b-lg

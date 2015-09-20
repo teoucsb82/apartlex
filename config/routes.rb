@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :subscriptions
+
   devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations" }
   
   get '/dashboard' => 'dashboard#home', as: :dashboard
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get 'pages/home'
+  get 'terms-of-service' => 'pages#terms_of_service', as: :terms_of_service
   delete 'images/destroy' => 'images#destroy'
   post '/images/create' => 'images#create'
   root 'pages#home'
