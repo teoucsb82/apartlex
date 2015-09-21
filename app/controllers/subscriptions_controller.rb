@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /subscriptions
   # GET /subscriptions.json
   def index
@@ -14,7 +14,14 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/new
   def new
-    @subscription = Subscription.new
+    @subscription = Subscription.new(type_of: params[:plan])
+    
+    if params[:errors]
+      flash[:danger] = []
+      params[:errors].each do |message|
+        flash[:danger] << message
+      end
+    end
   end
 
   # GET /subscriptions/1/edit
@@ -24,10 +31,14 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new(subscription_params)
+    Subscription.transaction do
+      build_resource(email: params[:email], password: params[:password])
+      resource.save
+      @subscription = Subscription.create_full_account(subscription_params)
+    end
 
     respond_to do |format|
-      if @subscription.save
+      if @subscription.valid?
         format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
         format.json { render :show, status: :created, location: @subscription }
       else
@@ -69,6 +80,6 @@ class SubscriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscription_params
-      params.require(:subscription).permit(:account_id, :type_of, :active, :start_date, :end_date)
+      params.require(:user).permit(:email, :password, accounts: [:name, subscription: [:account_id, :type_of, :active, :start_date, :end_date]])
     end
 end

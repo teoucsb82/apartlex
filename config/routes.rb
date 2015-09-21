@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :subscriptions
+  # resources :subscriptions
 
   devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations" }
   

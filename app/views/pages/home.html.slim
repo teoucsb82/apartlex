@@ -11,6 +11,7 @@
       #navbar.navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-right
           li = link_to "Home", "#page-top", class: "page-scroll"
+          li = link_to "About", "#about", class: "page-scroll"
           li = link_to "Features", "#features", class: "page-scroll"
           li = link_to "Testimonials", "#testimonials", class: "page-scroll"
           li = link_to "Pricing", "#pricing", class: "page-scroll"
@@ -57,6 +58,20 @@
 
       /! Set background for slide in css
       .header-back.one
+section#about.container.features
+  .row
+    .col-lg-12.text-center
+      .primary-line
+      h1 How It Works
+      p We make it easy to rent out property -- from a single room to entire condominiums.
+  .row.features-block
+    .col-lg-6.features-text.wow.fadeInLeft
+      small APARTLEX
+      h2 Text goes here
+      p more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here.
+      = link_to "Learn More", "#features", class: "btn btn-primary btn-outline"
+    .col-lg-6.text-right.wow.fadeInRight
+      = cl_image_tag("landing/sf_bridge", class: "img-responsive pull-right", width: 500, quality: 80, crop: :fill)
 section#features.container.services
   .row
     .col-sm-3.text-center.animated.fadeInDown
@@ -75,20 +90,6 @@ section#features.container.services
       i.fa.fa-picture-o.features-icon
       h2 Free Website + Hosting
       p Get your small business online with a professional website ready to serve you and your tenants in minutes.
-section.container.features
-  .row
-    .col-lg-12.text-center
-      .primary-line
-      h1 More great features
-      p We make it easy to rent out property -- from a single room to entire condominiums.
-  .row.features-block
-    .col-lg-6.features-text.wow.fadeInLeft
-      small APARTLEX
-      h2 Text goes here
-      p more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here more text here.
-      = link_to "Learn More", "#features", class: "btn btn-primary btn-outline"
-    .col-lg-6.text-right.wow.fadeInRight
-      = cl_image_tag("landing/sf_bridge", class: "img-responsive pull-right", width: 500, quality: 80, crop: :fill)
 section#testimonials.primary-section.testimonials
   .container
     .row
@@ -120,7 +121,7 @@ section#pricing.pricing
             li = details[:stat1]
             li = details[:stat1]
             li = details[:stat1]
-            li = link_to "Sign Up", new_subscription_path, class: "btn btn-primary"
+            li = link_to "Sign Up", new_user_registration_path, class: "btn btn-primary"
     .row.m-t-lg
       .col-lg-8.col-lg-offset-2.text-center.m-t-lg
         p
@@ -170,51 +171,4 @@ section#contact.gray-section.contact
           br/
           | consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
 
-- content_for :javascript
-  javascript:
-    $(function() {
-      var cbpAnimatedHeader;
-      $('body').addClass('landing-page');
-      $('body').attr('id', 'page-top');
-      $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 80
-      });
-      $('a.page-scroll').bind('click', function(event) {
-        var link;
-        link = $(this);
-        $('html, body').stop().animate({
-          scrollTop: $(link.attr('href')).offset().top - 50
-        }, 500);
-        event.preventDefault();
-      });
-      cbpAnimatedHeader = (function() {
-        var changeHeaderOn, didScroll, docElem, header, init, scrollPage, scrollY;
-        docElem = document.documentElement;
-        header = document.querySelector('.navbar-default');
-        didScroll = false;
-        changeHeaderOn = 200;
-        init = function() {
-          window.addEventListener('scroll', (function(event) {
-            if (!didScroll) {
-              didScroll = true;
-              setTimeout(scrollPage, 250);
-            }
-          }), false);
-        };
-        scrollPage = function() {
-          var sy;
-          sy = scrollY();
-          if (sy >= changeHeaderOn) {
-            $(header).addClass('navbar-scroll');
-          } else {
-            $(header).removeClass('navbar-scroll');
-          }
-          didScroll = false;
-        };
-        scrollY = function() {
-          return window.pageYOffset || docElem.scrollTop;
-        };
-        init();
-      })();
-    });
+= render 'layouts/navbar_js'

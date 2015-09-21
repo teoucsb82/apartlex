@@ -1,2 +1,6 @@
-= content_tag(:div, notice, class: "alert alert-success") if notice
-= content_tag(:div, alert, class: "alert alert-danger") if alert
+- flash.each do |type, messages|
+  - if messages.is_a?(Array)
+    - messages.each do |message|
+      = content_tag(:div, message, class: "alert alert-#{type}")
+  - else
+    = content_tag(:div, messages, class: "alert alert-#{type}")

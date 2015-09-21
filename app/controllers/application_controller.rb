@@ -25,4 +25,5 @@ class ApplicationController < ActionController::Base
   def load_user
     @user = current_user
   end
+  
 end

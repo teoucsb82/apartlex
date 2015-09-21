@@ -1,12 +1,48 @@
-= simple_form_for(@subscription) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
+  = render 'layouts/flash'
+  .row
+    .col-lg-6
+      .form-inputs
+        = f.input :email, required: true, autofocus: true
+        = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+        / = f.input :password_confirmation, required: true
+      .form-inputs
+        = f.simple_fields_for :accounts do |account|
+          = account.input :name, label: "Company Name", required: true
+    .col-lg-6
+      .form-inputs
+        = f.simple_fields_for :accounts do |account|
+          = account.simple_fields_for @subscription do |subscription|
+            = subscription.label :type_of
+            .row.subscription-icons
+              .col-xs-12
+                - t("subscription").keys.map(&:to_s).each do |name|
+                  = content_tag(:button, nil, 
+                                class: "btn btn-primary btn-outline dim btn-large-dim", 
+                                aria: { pressed: "false" }, 
+                                data: { toggle: "button", name: name }) do
+                    i.fa class="fa-#{t("subscription")[name.to_sym][:icon]}" #{name}
 
-  .form-inputs
-    = f.association :account
-    = f.input :type_of
-    = f.input :active
-    = f.input :start_date
-    = f.input :end_date
+            = subscription.input :type_of, as: :hidden
+            = subscription.input :active, as: :hidden, input_html: { value: true }
+            = subscription.input :start_date, as: :hidden
 
-  .form-actions
-    = f.button :submit
+  .row
+    .col-lg-12
+      .form-actions
+        = f.button :submit, "Create Account", class: "btn-primary btn-lg btn-outline pull-right"
+
+- content_for :javascript
+  javascript:
+    $(function() {
+      current_val = $("#user_accounts_subscription_type_of").val()
+      $("[aria-pressed][data-name='" + current_val + "']").click()
+
+      $("[aria-pressed]").on("click", function(e) {
+        $(this).siblings("[aria-pressed='true']").each(function() {
+          $(this).click();
+        });
+        $("#user_accounts_subscription_type_of").attr("value", $(this).text())
+      });
+    });

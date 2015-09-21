@@ -1,3 +1,26 @@
 // Place all the styles related to the Subscriptions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "style";
+
+body.subscriptions {
+  background: $whitesmoke;
+  .wrapper {
+    padding-top: 80px;
+  }
+
+  .subscription-icons {
+    .dim {
+      i {
+        font-size: 1.4rem;
+        &:before {
+          display: block;
+          padding-top: 6px;
+          margin-bottom: 6px;
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}

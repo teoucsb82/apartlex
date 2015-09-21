@@ -1,0 +1,46 @@
+- content_for :javascript
+  javascript:
+    $(function() {
+      var cbpAnimatedHeader;
+      $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 80
+      });
+      $('a.page-scroll').bind('click', function(event) {
+        var link;
+        link = $(this);
+        $('html, body').stop().animate({
+          scrollTop: $(link.attr('href')).offset().top - 50
+        }, 500);
+        event.preventDefault();
+      });
+      cbpAnimatedHeader = (function() {
+        var changeHeaderOn, didScroll, docElem, header, init, scrollPage, scrollY;
+        docElem = document.documentElement;
+        header = document.querySelector('.navbar-default');
+        didScroll = false;
+        changeHeaderOn = 200;
+        init = function() {
+          window.addEventListener('scroll', (function(event) {
+            if (!didScroll) {
+              didScroll = true;
+              setTimeout(scrollPage, 250);
+            }
+          }), false);
+        };
+        scrollPage = function() {
+          var sy;
+          sy = scrollY();
+          if (sy >= changeHeaderOn) {
+            $(header).addClass('navbar-scroll');
+          } else {
+            $(header).removeClass('navbar-scroll');
+          }
+          didScroll = false;
+        };
+        scrollY = function() {
+          return window.pageYOffset || docElem.scrollTop;
+        };
+        init();
+      })();
+    });

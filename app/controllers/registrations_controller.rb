@@ -29,7 +29,11 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      if params[:user][:accounts][:subscription]
+        redirect_to new_subscription_path(errors: resource.errors.full_messages)
+      else
+        respond_with resource
+      end
     end
   end
 

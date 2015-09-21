@@ -29,6 +29,7 @@ en:
       stat2:
       stat3:
       stat4:
+      icon: check-circle
     plus:
       description: foobar blah
       price: 29
@@ -37,6 +38,7 @@ en:
       stat2:
       stat3:
       stat4:
+      icon: check-circle
     premium:
       description: foobar blah
       price: 49
@@ -44,3 +46,4 @@ en:
       stat2:
       stat3:
       stat4:
+      icon: check-circle
