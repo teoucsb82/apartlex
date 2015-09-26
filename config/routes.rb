@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # resources :subscriptions
 
-  devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations" }
+  devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations", passwords: "passwords" }
   
   get '/dashboard' => 'dashboard#home', as: :dashboard
   resource :dashboard, only: [] do

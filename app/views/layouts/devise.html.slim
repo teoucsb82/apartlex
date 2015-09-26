@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Apartlex
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")
+    = csrf_meta_tags
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1" 
+  body#page-top.landing-page class="#{controller_name}"
+    = render 'devise/shared/header'
+    section
+      .container
+        .row
+          .col-md-8.col-md-offset-2.login-box
+            .ibox.float-e-margins
+              .ibox-content
+                = yield
+    = javascript_include_tag 'application'
+    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
+    = yield :javascript
+    = cloudinary_js_config
+

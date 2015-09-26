@@ -1,0 +1,40 @@
+@import "style";
+
+body.registrations,
+body.sessions,
+body.passwords { 
+  background: url("//res.cloudinary.com/apartlex/image/upload/c_scale,q_80,w_1363/v1443225929/login.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  section {
+    padding-top: 12.5%; 
+    @media (max-width: $screen-sm) { padding-top: 20%; }
+    @media (max-width: $screen-xs) { padding-top: 25%; }
+
+    .ibox-content {
+      padding: 30px;
+      border-radius: 5px;
+      background-color: rgba(0,0,0,0.4);
+      border-color: $brand-primary;
+      color: $whitesmoke;
+
+      form input {
+        color: $black;
+      }
+    }
+
+    .fa {
+      color: $whitesmoke;
+    }
+  }
+
+  .b-r,
+  .b-l,
+  .b-t,
+  .b-b {
+    border-color: $brand-primary;
+  }
+}

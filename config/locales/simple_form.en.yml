@@ -16,8 +16,18 @@ en:
         password: 'Password'
       subscription:
         type_of: plan type
+      user:
+        accounts:
+          name: Company Name
     hints:
       defaults:
+    placeholders:
+      defaults:
+        email: Email Address
+        password: Password
+      user:
+        accounts:
+          name: Company Name
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'
