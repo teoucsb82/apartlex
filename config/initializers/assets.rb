@@ -11,7 +11,8 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 controllers = Dir[Rails.root.join('app/controllers/**/*_controller.rb')].map { |path| path.match(/controllers\/([a-z|_|\/]+)_controller.rb/); $1 }.compact
+controllers.each do |controller|
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
+end
 
-  controllers.each do |controller|
-    Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
-  end
+Rails.application.config.assets.precompile += ["devise.css"]

@@ -1,0 +1,22 @@
+.row
+  .col-sm-12
+    h3.m-t-none.m-b Log in
+    p Please enter your email and password to continue.
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.error_notification
+      .form-group
+        = f.input :email, required: false, autofocus: true, input_html: { class: "input-lg"}
+      .form-group
+        = f.input :password, required: false, input_html: { class: "input-lg"}
+      .form-group
+        = f.input :remember_me, as: :hidden, input_html: { checked: true }, hidden: true if devise_mapping.rememberable?
+      .form-group
+        button.btn.btn-lg.btn-primary.btn-block type="submit" 
+          strong Log in
+.row
+  .col-sm-12
+    p
+      | Not a member yet? Click 
+      = link_to "here", new_registration_path(resource_name)
+      |  to register
+    

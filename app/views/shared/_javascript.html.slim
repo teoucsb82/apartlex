@@ -1,0 +1,8 @@
+- if Rails.env.development?
+  = javascript_include_tag 'application'
+  = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")  
+- else
+  = javascript_include_tag 'application', async: true
+  = javascript_include_tag params[:controller], async: true if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
+= yield :javascript
+= cloudinary_js_config

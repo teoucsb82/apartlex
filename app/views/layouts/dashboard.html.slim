@@ -16,7 +16,4 @@ html
         = render 'layouts/flash'
         = yield
         = render 'layouts/footer'
-    = javascript_include_tag 'application'
-    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
-    = yield :javascript
-    = cloudinary_js_config
+    = render 'shared/javascript'
