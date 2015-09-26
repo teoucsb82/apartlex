@@ -20,4 +20,5 @@
 //= require cloudinary
 //= require cocoon
 //= require global
-//= require inspinia.js
+//= require inspinia
+//= require ga
