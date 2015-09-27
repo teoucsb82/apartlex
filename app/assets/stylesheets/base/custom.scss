@@ -29,7 +29,7 @@
   color: $brand-primary;
   font-size: 3rem;
   transition: 0.25s ease all;
-  font-family: "Gruppo";
+  font-family: $font-brand;
 }
 
 a > .logo:hover {
@@ -42,4 +42,8 @@ a > .logo:hover {
 
 a > .fa {
   margin-right: 5px;
+}
+
+.font-brand {
+  font-family: $font-brand;
 }

@@ -44,6 +44,7 @@ $deeppink: #ff1493;
 $deepskyblue: #00bfff;
 $dimgray: #696969;
 $dodgerblue: #1e90ff;
+$dodgeruniformblue: #005A9C;
 $firebrick: #b22222;
 $floralwhite: #fffaf0;
 $forestgreen: #228b22;
@@ -147,7 +148,7 @@ $yellowgreen: #9acd32;
 
 // Basic Colors
 $brand-primary: $dodgerblue;
-$brand-secondary: complement($brand-primary);
+$brand-secondary: complement($dodgerblue);
 $navy: #000080;           
 $dark-gray: #c2c2c2;      // Default color
 
@@ -182,3 +183,4 @@ $nav-bg: #2f4050;
 $nav-profil-pattern: image-url("patterns/header-profile.png") no-repeat;
 $nav-text-color: #a7b1c2;
 
+$font-brand: "Raleway";
