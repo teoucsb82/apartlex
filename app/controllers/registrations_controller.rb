@@ -6,6 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     build_resource({})
+    resource.build_account
     set_minimum_password_length
     yield resource if block_given?
     respond_with self.resource
@@ -16,6 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.save
+
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
@@ -30,11 +32,13 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      if params[:user][:accounts][:subscription]
-        redirect_to new_subscription_path(errors: resource.errors.full_messages)
-      else
-        respond_with resource
+      resource.build_account
+      unless resource.account.valid?
+        resource.account.errors.delete(:name)
+        message = resource.errors.messages[:name].first
+        resource.account.errors.add(:name, message) 
       end
+      respond_with resource
     end
   end
 
@@ -50,7 +54,7 @@ class RegistrationsController < Devise::RegistrationsController
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-    resource_updated = update_resource(resource, account_update_params)
+    resource_updated = update_resource(resource)
     yield resource if block_given?
     if resource_updated
       if is_flashing_format?
@@ -108,7 +112,7 @@ class RegistrationsController < Devise::RegistrationsController
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.
   def sign_up(resource_name, resource)
-    resource.create_account(params)
+    # resource.create_account(params)
     sign_in(resource_name, resource)
   end
 
@@ -141,10 +145,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     devise_parameter_sanitizer.sanitize(:sign_up)
-  end
-
-  def account_update_params
-    devise_parameter_sanitizer.sanitize(:account_update)
+    params.require(:user).permit(:email, :password, account_attributes: [:name])
   end
 
   def translation_scope

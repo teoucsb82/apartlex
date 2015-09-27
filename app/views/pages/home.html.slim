@@ -14,10 +14,9 @@
               .form-title
                 h3 Sign Up For a 30-Day No Risk FREE Trial
               .form-body
-                - resource = User.new
+                - resource.build_account
                 = simple_form_for(resource, url: registration_path(resource), defaults: { required: true }) do |f|
                   = f.error_notification
-
                   .form-inputs
                     = f.input :email, 
                               autofocus: true, 
@@ -28,7 +27,7 @@
                               input_html: { class: "input-lg" },
                               label: false
                   .form-inputs
-                    = f.simple_fields_for :accounts do |account|
+                    = f.simple_fields_for :account do |account|
                       = account.input :name, 
                                       label: false,
                                       input_html: { class: "input-lg" }

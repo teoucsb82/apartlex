@@ -7,13 +7,14 @@ html
     = csrf_meta_tags
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1" 
-  body#page-top.landing-page class="#{controller_name}"
+  body.landing-page class="#{controller_name}"
     = render 'devise/shared/header'
-    section
-      .container
-        .row
-          .col-md-8.col-md-offset-2.login-box
-            .ibox.float-e-margins
-              .ibox-content
-                = yield
+    .dim
+      section
+        .container
+          .row
+            .col-xs-12.login-box
+              .ibox.float-e-margins
+                .ibox-content
+                  = yield
     = render 'shared/javascript'

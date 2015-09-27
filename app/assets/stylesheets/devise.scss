@@ -3,7 +3,7 @@
 body.registrations,
 body.sessions,
 body.passwords { 
-  background: url("//res.cloudinary.com/apartlex/image/upload/c_scale,q_80,w_1363/v1443225929/login.jpg") no-repeat center center fixed; 
+  background: url("//res.cloudinary.com/apartlex/image/upload/c_scale,q_80,w_1363/v1442699326/splash_kkiq6d.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -23,6 +23,7 @@ body.passwords {
         margin: 0;
         display: inline-block;
       }
+
 
       .mobile-signup-links {
         display: inline-block;
@@ -69,7 +70,7 @@ body.passwords {
       border-color: $brand-primary;
       color: $whitesmoke;
 
-      input { color: $black; }
+      input { color: $text-color; }
       p {
         font-size: 1.5rem;
       }

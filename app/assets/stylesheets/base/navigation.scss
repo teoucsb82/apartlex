@@ -504,3 +504,17 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   display: block;
   width: 220px;
 }
+
+body > .navbar-wrapper > .navbar > .container {
+  > .navbar-header > .navbar-brand {
+    margin-left: 0; 
+  }
+
+  .navbar-right { 
+    margin-right: 0; 
+    > li:last-of-type > a { 
+      padding-right: 0; 
+    }
+  }
+
+}

@@ -3,8 +3,9 @@
     .col-lg-12
       .ibox.float-e-margins
         .ibox-title
-          .text-right
-            = link_to 'New Property', new_dashboard_property_path, class: "btn btn-primary"
+          = link_to new_dashboard_property_path, class: "btn btn-primary" do
+            i.fa.fa-plus
+            | New Property
         .ibox-content
           table.table.table-bordered.table-hover.properties-table
             thead

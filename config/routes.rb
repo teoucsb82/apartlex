@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   get 'pages/home'
+  get 'users/sign_up' => 'registrations#new', as: :users
   get 'terms-of-service' => 'pages#terms_of_service', as: :terms_of_service
+  get 'privacy-policy' => 'pages#privacy_policy', as: :privacy_policy
   delete 'images/destroy' => 'images#destroy'
   post '/images/create' => 'images#create'
   root 'pages#home'

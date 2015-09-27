@@ -1,6 +1,6 @@
 .row
   .col-sm-12
-    h3.m-t-none.m-b Log in
+    h2.m-t-none.m-b Log in
     p Please enter your email and password to continue.
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.error_notification

@@ -25,6 +25,7 @@ module ApplicationHelper
           when "new" then "New Property"
           else
           end
+      when "settings" then params[:id].titleize
       else
       end
 

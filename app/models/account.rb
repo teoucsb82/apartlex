@@ -4,6 +4,6 @@ class Account < ActiveRecord::Base
   has_one :setting
 
   after_create :create_setting
-  validates_presence_of :name
-  validates :name, uniqueness: true
+  validates :name, presence: { message: "Please provide a company name" }
+  validates :name, uniqueness: { case_sensitive: false, message: "Sorry, that name has been taken" }
 end
