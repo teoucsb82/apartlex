@@ -33,11 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       resource.build_account
-      if !resource.account.valid? && resource.errors.messages[:name]
-        resource.account.errors.delete(:name)
-        message = resource.errors.messages[:name].first
-        resource.account.errors.add(:name, message) 
-      end
+      set_account_validation_errors
       respond_with resource
     end
   end
@@ -150,5 +146,17 @@ class RegistrationsController < Devise::RegistrationsController
 
   def translation_scope
     'devise.registrations'
+  end
+
+  def set_account_validation_errors
+    if !resource.account.valid? 
+      resource.account.errors.delete(:name)
+      if resource.errors.messages[:name]
+        message = resource.errors.messages[:name].first
+      elsif resource.errors.messages[:subdomain]
+        message = resource.errors.messages[:subdomain].first
+      end
+      resource.account.errors.add(:name, message) 
+    end
   end
 end

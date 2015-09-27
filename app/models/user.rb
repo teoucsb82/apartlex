@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates_associated :account
   has_many :properties, through: :account
 
+  before_create :downcase_email
   after_create :save_account
 
   def save_account
@@ -20,4 +21,10 @@ class User < ActiveRecord::Base
     end
     account.save!
   end
+
+  private
+  def downcase_email
+    self.email = self.email.downcase if self.email.present?
+  end
+
 end
