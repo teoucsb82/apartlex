@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  RESERVED_SUBDOMAINS = %w(admin api assets blog calendar camo dashboard demo developer development developers dev docs files ftp git imap lab m mail manage mx pages pop pop3 secure sites smtp ssl stage staging status support www)
+  RESERVED_SUBDOMAINS = %w(admin api assets blog calendar dashboard demo developer development developers dev docs files ftp git imap lab m mail manage mx pages pop pop3 secure sites smtp ssl stage staging status support www)
   belongs_to :user
   has_many :properties
   has_one :setting

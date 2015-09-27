@@ -3,7 +3,7 @@
 body.registrations,
 body.sessions,
 body.passwords { 
-  background: url("//res.cloudinary.com/apartlex/image/upload/c_scale,q_80,w_1363/v1442699326/splash_kkiq6d.jpg") no-repeat center center fixed; 
+  background: url("//res.cloudinary.com/apartlex/image/upload/c_scale,q_80,w_1363/login.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -59,7 +59,7 @@ body.passwords {
   }
 
   section {
-    padding-top: 12.5%; 
+    padding-top: 10%; 
     @media (max-width: $screen-sm) { padding-top: 20%; }
     @media (max-width: $screen-xs) { padding-top: 25%; }
 

@@ -150,7 +150,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def set_account_validation_errors
     if !resource.account.valid? 
-      resource.account.errors.delete(:name)
+      message = resource.account.errors.delete(:name)
+      message = message.first if message.is_a?(Array)
       if resource.errors.messages[:name]
         message = resource.errors.messages[:name].first
       elsif resource.errors.messages[:subdomain]
