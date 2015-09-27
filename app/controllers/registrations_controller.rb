@@ -33,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       resource.build_account
-      unless resource.account.valid?
+      if !resource.account.valid? && resource.errors.messages[:name]
         resource.account.errors.delete(:name)
         message = resource.errors.messages[:name].first
         resource.account.errors.add(:name, message) 
