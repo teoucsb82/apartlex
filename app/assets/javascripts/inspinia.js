@@ -160,21 +160,6 @@ $(window).bind("resize", function () {
     }
 });
 
-// For demo purpose - animation css script
-function animationHover(element, animation){
-    element = $(element);
-    element.hover(
-        function() {
-            element.addClass('animated ' + animation);
-        },
-        function(){
-            //wait for animation to finish before removing classes
-            window.setTimeout( function(){
-                element.removeClass('animated ' + animation);
-            }, 2000);
-        });
-}
-
 function SmoothlyMenu() {
     if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
         // Hide menu in order to smoothly turn on when maximize menu
